@@ -31,9 +31,7 @@
  *
  * @return {RegExp}
  */
-function getRegexForGuid() {
-  throw new Error('Not implemented');
-}
+function getRegexForGuid() {}
 
 
 /**
@@ -53,10 +51,7 @@ function getRegexForGuid() {
  * @return {RegExp}
  *
  */
-function getRegexForPitSpot() {
-  throw new Error('Not implemented');
-}
-
+function getRegexForPitSpot() {}
 
 /**
  * Returns the password validator regex.
@@ -78,10 +73,7 @@ function getRegexForPitSpot() {
  *   'PASSW0RD'.match(validator)  => false
  *   'Pa55'.match(validator) => false
  */
-function getPasswordValidator(/* minLength */) {
-  throw new Error('Not implemented');
-}
-
+function getPasswordValidator() {}
 
 module.exports = {
   getRegexForGuid,

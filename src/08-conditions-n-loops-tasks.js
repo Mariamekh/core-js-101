@@ -163,9 +163,7 @@ function doRectanglesOverlap() {}
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-
-}
+function isInsideCircle(/* circle, point */) {}
 
 
 /**
@@ -237,8 +235,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-  const st = str.split('').reverse().join('');
-  return st;
+  return str.split('').reverse().join('');
 }
 
 

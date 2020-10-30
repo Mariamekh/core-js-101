@@ -51,7 +51,9 @@ function getRegexForGuid() {}
  * @return {RegExp}
  *
  */
-function getRegexForPitSpot() {}
+function getRegexForPitSpot() {
+  return new RegExp(/p[\soia]+t/);
+}
 
 /**
  * Returns the password validator regex.

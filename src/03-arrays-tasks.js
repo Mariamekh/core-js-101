@@ -36,7 +36,12 @@ function findElement(arr, value) {
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds() {
+function generateOdds(len) {
+  let res = [];
+  res.length = len;
+  res.fill(1);
+  res = res.map((item, index) => item + index * 2);
+  return res;
 }
 
 
@@ -210,7 +215,9 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText() {}
+function toCsvText(arr) {
+  return arr.reduce((acc, inn) => `${acc + inn.join(',')}\n`, '').trim();
+}
 
 /**
  * Transforms the numeric array into the according array of squares:
@@ -280,7 +287,12 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex() {}
+function propagateItemsByPositionIndex(arr) {
+  return arr.reduce((result, item, index) => {
+    const repeated = index + 1;
+    return result.concat(new Array(repeated).fill(item));
+  }, []);
+}
 
 /**
  * Returns the 3 largest numbers from the specified array
@@ -330,7 +342,13 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder() {}
+function sortDigitNamesByNumericOrder(arr) {
+  function which(x, y) {
+    const numberStrings = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+    return numberStrings.indexOf(x) - numberStrings.indexOf(y);
+  }
+  return arr.sort(which);
+}
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -424,7 +442,18 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray() {}
+function sortCitiesArray(arr) {
+  function which(x, y) {
+    if (x.country === y.country) {
+      if (x.city > y.city) return 1;
+      return -1;
+    } if (x.country > y.country) {
+      return 1;
+    }
+    return -1;
+  }
+  return arr.sort(which);
+}
 
 /**
  * Creates an indentity matrix of the specified size
@@ -459,7 +488,15 @@ function getIdentityMatrix() {}
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray() {}
+function getIntervalArray(start, end) {
+  const res = [];
+  if (start === end) {
+    res.push(start);
+  }
+  res.length = end - start + 1;
+  res.fill(0);
+  return res.map((item, index) => start + index);
+}
 
 /**
  * Returns array containing only unique values from the specified array.
@@ -472,7 +509,12 @@ function getIntervalArray() {}
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct() {}
+function distinct(arr) {
+  return arr.reduce((acc, item) => {
+    if (!acc.includes(item)) acc.push(item);
+    return acc;
+  }, []);
+}
 
 /**
  * Groups elements of the specified array by key.
@@ -519,7 +561,12 @@ function group() {}
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany() {}
+function selectMany(arr, childrenSelector) {
+  return arr.reduce((acc, item) => {
+    acc.push(...childrenSelector(item));
+    return acc;
+  }, []);
+}
 
 /**
  * Returns an element from the multidimentional array by the specified indexes.

@@ -23,7 +23,8 @@
 function Rectangle(width, height) {
   this.width = width;
   this.height = height;
-  this.gett = function () {
+  // eslint-disable-next-line func-names
+  this.getSize = function () {
     return this.width * this.height;
   };
 }

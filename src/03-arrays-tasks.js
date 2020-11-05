@@ -40,8 +40,7 @@ function generateOdds(len) {
   let res = [];
   res.length = len;
   res.fill(1);
-  res = res.map((item, index) => item + index * 2);
-  return res;
+  return res.map((item, index) => item + index * 2);
 }
 
 

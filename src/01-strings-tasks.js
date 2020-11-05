@@ -53,10 +53,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-  const name = firstName;
-  const last = lastName;
-  const str = `Hello, ${name} ${last}!`;
-  return str;
+ return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -248,9 +245,7 @@ function encodeToRot13() {}
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  if (typeof value === 'string' || value instanceof String) {
-    return true;
-  } return false;
+  return (typeof value === 'string' || value instanceof String)
 }
 
 
